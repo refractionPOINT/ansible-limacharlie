@@ -21,7 +21,7 @@ Role Variables
 Example Playbook
 ----------------
 
-Example playbook is in `playbook.yml`
+Example playbook is in `limacharlie-sensor.yml`
 
 ### Usage:
 
