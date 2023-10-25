@@ -27,9 +27,9 @@ Example playbook is in `limacharlie-sensor.yml`
 
 #### Deploy via binary 
 ```
-ansible-playbook playbook.yml --extra-vars "deployment=binary"
+ansible-playbook limacharlie-sensor.yml --extra-vars "deployment=binary"
 ```
 #### Deploy via deb file
 ```
-ansible-playbook playbook.yml --extra-vars "deployment=deb"
+ansible-playbook limacharlie-sensor.yml --extra-vars "deployment=deb"
 ```
