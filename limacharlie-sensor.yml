@@ -1,0 +1,6 @@
+- name: Deploy LimaCharlie sensor
+  hosts: localhost
+  gather_facts: true
+
+  roles:
+  - limacharlie-sensor
