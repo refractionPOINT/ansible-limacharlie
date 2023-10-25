@@ -1,4 +1,4 @@
-Role Name
+limacharlie-sensor
 =========
 
 This role downloads and installs the LimaCharlie EDR sensor.
