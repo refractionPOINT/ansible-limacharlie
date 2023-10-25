@@ -1,0 +1,9 @@
+---
+# tasks file for limacharlie-sensor
+
+- name: deploy binary
+  import_tasks: deploy-sensor-binary.yml
+  when: deployment == "binary"
+- name: deploy deb
+  import_tasks: deploy-sensor-deb.yml
+  when: deployment == "deb"

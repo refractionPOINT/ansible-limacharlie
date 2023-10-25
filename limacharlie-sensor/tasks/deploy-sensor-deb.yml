@@ -1,0 +1,21 @@
+---
+
+- name: Download limacharlie deb
+  get_url:
+    url: https://downloads.limacharlie.io/sensor/linux/deb32
+    dest: /opt/limacharlie.deb
+  when: ansible_architecture == "i386"
+
+- name: Download limacharlie deb
+  get_url:
+    url: https://downloads.limacharlie.io/sensor/linux/deb64
+    dest: /opt/limacharlie.deb
+  when: ansible_architecture == "x86_64"
+
+- name: Install limacharlie deb
+  command: echo "limacharlie limacharlie/installation_key string {{ installation_key }}" | sudo debconf-set-selections && sudo dpkg -i /opt/limacharlie.deb
+
+- name: Delete deb file
+  file:
+    path: /opt/limacharlie.deb
+    state: absent

@@ -1,0 +1,43 @@
+---
+
+- name: Download 32bit sensor
+  get_url:
+    url: https://downloads.limacharlie.io/sensor/linux/32
+    dest: /opt/lc_sensor
+    mode: 0755
+  when: ansible_architecture == "i386"
+
+- name: Download 64bit sensor
+  get_url:
+    url: https://downloads.limacharlie.io/sensor/linux/64
+    dest: /opt/lc_sensor
+    mode: 0755
+  when: ansible_architecture == "x86_64"
+
+- name: Download arm64 sensor
+  get_url:
+    url: https://downloads.limacharlie.io/sensor/linux/arm64
+    dest: /opt/lc_sensor
+    mode: 0755
+  when: ansible_architecture == "arm64"
+
+- name: Download install script
+  get_url:
+    url: https://raw.githubusercontent.com/refractionPOINT/lce_doc/master/docs/lc_linux_installer.sh
+    dest: /opt/lc_linux_installer.sh
+    mode: 0755
+
+# - name: Copy install script (optional if you want to make modifications to it and serve it locally instead of using get_url above)
+#   copy:
+#     src: ../files/lc_linux_installer.sh
+#     dest: /opt/lc_linux_installer.sh
+#     mode: 0755
+
+- name: Run install script
+  command: /opt/lc_linux_installer.sh /opt/lc_sensor {{ installation_key }}
+
+- name: Make sure limacharlie service is started and enabled
+  service:
+    name: limacharlie
+    state: started
+    enabled: yes
