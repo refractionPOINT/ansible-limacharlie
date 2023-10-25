@@ -1,3 +1,6 @@
+# Usage:
+# ansible-playbook playbook.yml --extra-vars "deployment=deb"
+
 - name: Deploy LimaCharlie sensor
   hosts: localhost
   gather_facts: true
